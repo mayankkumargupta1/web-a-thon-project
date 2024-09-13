@@ -1,0 +1,211 @@
+{% extends "index.html" %}
+
+{% block content %}
+<style>
+    /* Main chatbot container */
+    .chatbot-interface {
+        width: 100%;
+        max-width: 600px;
+        /* Set a max width for better readability */
+        margin: 20px auto;
+        /* Centering the container */
+        background-color: #0D0D0D;
+        /* Background color */
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Message styling */
+    .chatbot-message {
+        margin: 15px 0;
+        /* Space between messages */
+    }
+
+    .chatbot-message h1 {
+        color: #8B05FF;
+        /* Title color */
+        font-size: 1.3em;
+        /* Title size */
+        margin: 0;
+        /* Remove margin */
+        text-shadow: 0 0 5px #8B05FF;
+        /* Subtle glow effect */
+    }
+
+    .chatbot-message p {
+        color: #E6DAFF;
+        /* Message color */
+        line-height: 1.5;
+        /* Line spacing */
+        margin: 5px 0;
+        /* Margin between text elements */
+    }
+
+    /* Latest response styling */
+    .latest-response {
+        background-color: #72001B;
+        /* Distinct background for latest response */
+        border-radius: 10px;
+        /* Rounded corners */
+        padding: 15px;
+        /* Padding */
+        margin-bottom: 20px;
+        /* Space below */
+        color: #E6DAFF;
+        /* Text color */
+        font-weight: bold;
+        /* Bold text */
+        font-size: 1.2em;
+        /* Slightly larger text */
+        box-shadow: 0 0 10px #72001B;
+        /* Shadow effect */
+    }
+
+    /* Form container styling */
+    .form-container {
+        display: flex;
+        /* Flex layout */
+        margin-top: 20px;
+        /* Space above */
+        align-items: center;
+        justify-content: center;
+        /* Center align items */
+    }
+
+    .search-input {
+        flex-grow: 1;
+        /* Allow input to take available space */
+        padding: 15px;
+        /* Input padding */
+        border: 2px solid #8B05FF;
+        /* Border color */
+        border-radius: 30px;
+        /* Rounded edges */
+        outline: none;
+        /* Remove default outline */
+        background-color: #1A1A1A;
+        /* Background color */
+        color: #E6DAFF;
+        /* Text color */
+        font-size: 18px;
+        /* Font size */
+        transition: box-shadow 0.3s;
+        /* Transition for shadow */
+    }
+
+    .search-input:focus {
+        box-shadow: 0 0 10px #8B05FF;
+        /* Glow effect on focus */
+    }
+
+    .search-button {
+        padding: 15px;
+        /* Button padding */
+        border: none;
+        /* No border */
+        border-radius: 30px;
+        /* Rounded edges */
+        background-color: #8B05FF;
+        /* Background color */
+        color: #E6DAFF;
+        /* Text color */
+        cursor: pointer;
+        /* Pointer cursor */
+        margin-left: 10px;
+        /* Space between input and button */
+        transition: background-color 0.3s;
+        /* Transition for background */
+    }
+
+    .search-button:hover {
+        background-color: #72001B;
+        /* Change color on hover */
+    }
+
+    /* Fixed clear chat button */
+    .clear-chat-button {
+        position: fixed;
+        /* Fixed position */
+        bottom: 20px;
+        /* Distance from bottom */
+        right: 20px;
+        /* Distance from right */
+        background-color: #72001B;
+        /* Background color */
+        color: #E6DAFF;
+        /* Text color */
+        border: none;
+        /* No border */
+        border-radius: 30px;
+        /* Rounded edges */
+        padding: 15px 20px;
+        /* Padding */
+        cursor: pointer;
+        /* Pointer cursor */
+        box-shadow: 0 0 10px #72001B;
+        /* Shadow effect */
+        transition: background-color 0.3s;
+        /* Transition for background */
+    }
+
+    .clear-chat-button:hover {
+        background-color: #8B05FF;
+        /* Change color on hover */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .search-input {
+            font-size: 16px;
+            /* Adjust font size for mobile */
+        }
+
+        .search-button {
+            padding: 10px;
+            /* Reduce button size */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .search-input {
+            font-size: 14px;
+            /* Further adjust for smaller screens */
+        }
+
+        .search-button {
+            padding: 8px;
+            /* Further reduce button size */
+        }
+    }
+</style>
+
+<div class="chatbot-interface">
+    <!-- Displaying the chat messages -->
+    {% for x in details %}
+    <div class="chatbot-message">
+        <h1>{{ x.question }}</h1>
+        <p>{{ x.answer }}</p>
+        <p>{{ x.date }}</p>
+    </div>
+    {% endfor %}
+
+    <div class="latest-response">
+        {{ data }} <!-- Highlight the latest response -->
+    </div>
+</div>
+
+<div class="form-container">
+    <form class="search-form" method="POST">
+        {% csrf_token %}
+        <input type="text" name='text' class="search-input" placeholder="Let's talk about finance...">
+        <button type="submit" class="search-button">Send</button>
+    </form>
+</div>
+
+<!-- Clear chat button -->
+<a href="{% url 'reset_assistant' %}">
+    <button class="clear-chat-button">Clear Chat</button>
+</a>
+
+{% endblock content %}

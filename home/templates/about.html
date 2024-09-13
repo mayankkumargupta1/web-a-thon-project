@@ -1,0 +1,161 @@
+{% extends "index.html" %}
+
+{% block content %}
+<style>
+    /* About Us Page Styles */
+    .about-container {
+        max-width: 1200px;
+        /* Max width for the container */
+        margin: 0 auto;
+        /* Center the container */
+        padding: 20px;
+        /* Padding inside the container */
+        background-color: #0D0D0D;
+        /* Background color */
+        border-radius: 10px;
+        /* Rounded corners */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        /* Shadow effect */
+        color: #E6DAFF;
+        /* Text color */
+    }
+
+    /* Title Styles */
+    .about-title {
+        text-align: center;
+        /* Center align title */
+        color: #8B05FF;
+        /* Title color */
+        font-size: 2em;
+        /* Font size */
+        margin-bottom: 30px;
+        /* Space below title */
+    }
+
+    /* Profile Cards */
+    .profile-card {
+        background-color: #1A1A1A;
+        /* Card background */
+        border-radius: 10px;
+        /* Rounded corners */
+        padding: 20px;
+        /* Padding inside card */
+        margin: 20px;
+        /* Space around card */
+        text-align: center;
+        /* Center align text */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        /* Card shadow */
+        transition: transform 0.3s;
+        /* Smooth scaling */
+    }
+
+    /* Profile Card Hover Effect */
+    .profile-card:hover {
+        transform: scale(1.05);
+        /* Scale effect on hover */
+    }
+
+    /* Profile Image */
+    .profile-image {
+        border-radius: 50%;
+        /* Circular image */
+        width: 100px;
+        /* Image width */
+        height: 100px;
+        /* Image height */
+        object-fit: cover;
+        /* Cover the image */
+        margin-bottom: 10px;
+        /* Space below image */
+    }
+
+    /* Profile Name */
+    .profile-name {
+        font-size: 1.5em;
+        /* Name font size */
+        color: #8B05FF;
+        /* Name color */
+        margin: 10px 0;
+        /* Space above and below name */
+    }
+
+    /* Profile Position */
+    .profile-position {
+        color: #E6DAFF;
+        /* Position color */
+        font-size: 1.2em;
+        /* Position font size */
+        margin-bottom: 10px;
+        /* Space below position */
+    }
+
+    /* LinkedIn Link */
+    .linkedin-link {
+        text-decoration: none;
+        /* Remove underline */
+        color: #8B05FF;
+        /* Link color */
+        font-weight: bold;
+        /* Bold text */
+        transition: color 0.3s;
+        /* Smooth color transition */
+    }
+
+    /* LinkedIn Link Hover Effect */
+    .linkedin-link:hover {
+        color: #72001B;
+        /* Change color on hover */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .profile-card {
+            margin: 10px;
+            /* Less margin on mobile */
+        }
+    }
+</style>
+
+<div class="about-container">
+    <h2 class="about-title">About Us | Team Tech Titans</h2>
+    <div class="profile-card">
+        <img src="https://media.licdn.com/dms/image/v2/D4D03AQGfe05scfq7IQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1700746944898?e=1731542400&v=beta&t=DbBcmanQI95ApQo1Nws7z7Ow1DHGBWxvnmCQOPIUHRI"
+            alt="Profile Picture" class="profile-image">
+        <h3 class="profile-name">Mayank Kumar Gupta</h3>
+        <p class="profile-position">Student</p>
+        <a href="https://www.linkedin.com/in/mayankkumargupta1/" target="_blank" class="linkedin-link">View LinkedIn
+            Profile</a>
+    </div>
+
+    <div class="profile-card">
+        <img src="https://media.licdn.com/dms/image/v2/D4D03AQEOHOdA70Cj2w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1701385860717?e=1731542400&v=beta&t=ZBHrUso4zCheoZvBjgBjfjmljXzoCw_1RhqjF6LADGc"
+            alt="Profile Picture" class="profile-image">
+        <h3 class="profile-name">Rajan Sahu</h3>
+        <p class="profile-position">Student</p>
+        <a href="https://www.linkedin.com/in/rajansahuofficial?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            target="_blank" class="linkedin-link">View LinkedIn Profile</a>
+    </div>
+
+    <div class="profile-card">
+        <img src="https://media.licdn.com/dms/image/v2/D5603AQFbhpF0dmCT2Q/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1699256350575?e=1731542400&v=beta&t=lOnojI6MhVAQueJndaHl0l9lPLbd4WrPnpYyoGKxJqM"
+            alt="Profile Picture" class="profile-image">
+        <h3 class="profile-name">Vishal Patel</h3>
+        <p class="profile-position">Student</p>
+        <a href="https://www.linkedin.com/in/vishal-patel26?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            target="_blank" class="linkedin-link">View LinkedIn
+            Profile</a>
+    </div>
+
+    <div class="profile-card">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg"
+            alt="Profile Picture" class="profile-image">
+        <h3 class="profile-name">Suhani</h3>
+        <p class="profile-position">Student</p>
+        <a href="https://www.linkedin.com/in/suhanirawat2305/" target="_blank" class="linkedin-link">View LinkedIn
+            Profile</a>
+    </div>
+
+    <!-- Add more profiles as needed -->
+</div>
+{% endblock content %}

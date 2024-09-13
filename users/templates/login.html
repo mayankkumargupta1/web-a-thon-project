@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0D0D0D;
+            color: #E6DAFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            color: #8B05FF;
+            text-shadow: 0 0 10px #8B05FF, 0 0 20px #72001B;
+        }
+
+        form {
+            background-color: #1A1A1A;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 15px;
+            margin: 15px 0;
+            border: 2px solid #8B05FF;
+            border-radius: 8px;
+            background-color: #0D0D0D;
+            color: #E6DAFF;
+            font-size: 16px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #72001B;
+            outline: none;
+            box-shadow: 0 0 5px rgba(139, 5, 255, 0.5);
+        }
+
+        button {
+            background-color: #8B05FF;
+            color: #0D0D0D;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+            width: 100%;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        button:hover {
+            background-color: #72001B;
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+</body>
+
+</html>

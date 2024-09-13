@@ -1,0 +1,125 @@
+{% extends "index.html" %}
+
+{% block content %}
+<style>
+    /* Feedback Form Container */
+    .feedback-form-container {
+        max-width: 600px;
+        /* Set a max width for better readability */
+        margin: 20px auto;
+        /* Centering the container */
+        padding: 20px;
+        /* Padding inside the container */
+        background-color: #0D0D0D;
+        /* Background color */
+        border-radius: 10px;
+        /* Rounded corners */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        /* Shadow effect */
+    }
+
+    /* Form Title */
+    .feedback-form-title {
+        color: #8B05FF;
+        /* Title color */
+        font-size: 1.5em;
+        /* Font size */
+        margin-bottom: 20px;
+        /* Space below title */
+        text-align: center;
+        /* Center align title */
+    }
+
+    /* Input Fields Styling */
+    .feedback-form input,
+    .feedback-form textarea {
+        width: 100%;
+        /* Full width */
+        padding: 15px;
+        /* Padding inside input fields */
+        margin: 10px 0;
+        /* Space above and below input fields */
+        border: 2px solid #8B05FF;
+        /* Border color */
+        border-radius: 5px;
+        /* Rounded edges */
+        background-color: #1A1A1A;
+        /* Background color */
+        color: #E6DAFF;
+        /* Text color */
+        font-size: 16px;
+        /* Font size */
+        transition: border-color 0.3s;
+        /* Transition for border color */
+    }
+
+    /* Textarea specific styling */
+    .feedback-form textarea {
+        resize: vertical;
+        /* Allow vertical resizing */
+        min-height: 100px;
+        /* Minimum height */
+    }
+
+    /* Input Fields Focus Effect */
+    .feedback-form input:focus,
+    .feedback-form textarea:focus {
+        border-color: #72001B;
+        /* Change border color on focus */
+        outline: none;
+        /* Remove default outline */
+    }
+
+    /* Submit Button Styling */
+    .feedback-form button {
+        padding: 15px;
+        /* Button padding */
+        background-color: #8B05FF;
+        /* Button background color */
+        color: #E6DAFF;
+        /* Button text color */
+        border: none;
+        /* No border */
+        border-radius: 5px;
+        /* Rounded edges */
+        cursor: pointer;
+        /* Pointer cursor */
+        font-size: 16px;
+        /* Font size */
+        width: 100%;
+        /* Full width */
+        transition: background-color 0.3s;
+        /* Transition for background color */
+    }
+
+    /* Submit Button Hover Effect */
+    .feedback-form button:hover {
+        background-color: #72001B;
+        /* Change background color on hover */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+
+        .feedback-form input,
+        .feedback-form textarea {
+            font-size: 14px;
+            /* Adjust font size for mobile */
+        }
+
+        .feedback-form button {
+            font-size: 14px;
+            /* Adjust button font size */
+        }
+    }
+</style>
+
+<div class="feedback-form-container">
+    <h2 class="feedback-form-title">Feedback Form</h2>
+    <form method="post" class="feedback-form">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Submit Feedback</button>
+    </form>
+</div>
+{% endblock content %}

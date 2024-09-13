@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web a Thon</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    </style>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            background-color: #0D0D0D;
+            /* Background color */
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0D0D0D;
+            /* Navbar background color */
+            padding: 10px 20px;
+            overflow-x: auto;
+            /* Allows horizontal scrolling */
+            white-space: nowrap;
+            /* Prevents wrapping */
+            scrollbar-width: none;
+            /* Hides scrollbar for Firefox */
+            height: 50px;
+
+            border-color: #E6DAFF;
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+        }
+
+        /* Hide scrollbar for Chrome, Safari, and Opera */
+        .navbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .navbar a {
+            color: #E6DAFF;
+            /* Link color */
+            text-decoration: none;
+            padding: 10px 15px;
+            /* border-radius: 5px; */
+            transition: background-color 0.3s ease;
+            /* Transition effect */
+            border-color: #8B05FF;
+            border-bottom-width: 1px;
+            border-style: solid;
+        }
+
+        .navbar a:hover {
+
+            /* Background color on hover */
+            color: #E6DAFF;
+            background-color: #8B05FF;
+            /* Text color on hover */
+        }
+    </style>
+    <style>
+        /* Footer Styles */
+        .footer {
+            background-color: #0D0D0D;
+            /* Footer background color */
+            color: #E6DAFF;
+            /* Footer text color */
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            /* Relative positioning for potential fixed positioning */
+            bottom: 0;
+            /* Align at the bottom */
+            width: 100%;
+            /* Full width */
+            margin-top: 20px;
+            /* Space from content above */
+        }
+
+        .footer a {
+            color: #8B05FF;
+            /* Link color */
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+            /* Underline on hover */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div>
+            <a href="{% url 'home' %}"
+                style="background-color: #8B05FF; border-color: #E6DAFF; color: #E6DAFF; font-weight: 700;">Home</a>
+            <a href="{% url 'about' %}">About</a>
+
+        </div>
+
+        <!-- Right-aligned buttons -->
+        <div>
+            <a href="{% url 'feedback' %}">Feedback</a>
+            <a href="{% url 'contact' %}">Contact us</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Log Out</a>
+            {% else %}
+            <a href="{% url 'login' %}">Sign in</a>
+            <a href="{% url 'register' %}">Get Started</a>
+            {% endif %}
+        </div>
+    </div>
+
+    {% block content %}
+
+    {% endblock content %}
+
+    <footer>
+        <!-- Footer Section -->
+        <div class="footer">
+            <p>&copy; 2024 Web a Thon. All rights reserved.</p>
+            <p>
+                <a href="#privacy">Privacy Policy</a> |
+                <a href="#terms">Terms of Service</a> |
+                <a href="#contact">Contact Us</a>
+            </p>
+        </div>
+
+    </footer>
+</body>
+
+</html>

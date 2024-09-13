@@ -1,0 +1,239 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap');
+
+    /* Container for header with logo and title */
+    .header-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .header-logo {
+        max-width: 100px;
+        padding: 20px;
+    }
+
+    .header-title {
+        font-family: 'Playwrite CU', cursive;
+        font-weight: 200;
+        font-style: normal;
+        color: #c1ff72;
+        font-size: 4em;
+        text-align: center;
+        margin: 0;
+    }
+
+    /* Form container */
+    .form-container {
+        background-color: #0D0D0D;
+        padding: 20px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .search-form {
+        display: flex;
+        align-items: center;
+    }
+
+    .search-input {
+        padding: 15px;
+        border: 1px solid #8B05FF;
+        border-radius: 30px 0 0 30px;
+        outline: none;
+        background-color: #0D0D0D;
+        color: #E6DAFF;
+        width: 600px;
+        font-size: 18px;
+        box-shadow: 0 0 10px #8B05FF;
+    }
+
+    .search-button {
+        padding: 10px;
+        border: none;
+        border-radius: 0 30px 30px 0;
+        background-color: #8B05FF;
+        color: #E6DAFF;
+        cursor: pointer;
+        box-shadow: 0 0 15px #8B05FF;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+    }
+
+    .search-button svg {
+        fill: #E6DAFF;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .header-container {
+            flex-direction: column;
+            padding: 10px;
+        }
+
+        .header-logo {
+            max-width: 80px;
+            padding: 10px;
+        }
+
+        .header-title {
+            font-size: 2.5em;
+        }
+
+        .search-input {
+            width: 90%;
+            font-size: 16px;
+        }
+
+        .search-button {
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .header-title {
+            font-size: 2em;
+        }
+
+        .search-input {
+            width: 80%;
+            font-size: 14px;
+        }
+
+        .search-button {
+            width: 40px;
+            height: 40px;
+        }
+    }
+</style>
+
+<div class="header-container">
+    <img src="{% static 'images/logo.png' %}" alt="Logo" class="header-logo">
+    <h1 class="header-title">imperial advisor</h1>
+</div>
+
+<div class="form-container">
+    <form class="search-form" method="POST">
+        {% csrf_token %}
+        <input type="text" name='text' class="search-input" placeholder="lets talk about finance............">
+        <button type="submit" class="search-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path
+                    d="M10 18c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8c0 1.794-.586 3.451-1.57 4.8l4.796 4.796c.781.781.781 2.047 0 2.828-.781.781-2.047.781-2.828 0l-4.796-4.796c-1.349.984-3.006 1.57-4.8 1.57zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6z" />
+            </svg>
+        </button>
+    </form>
+</div>
+
+<h2 style="
+    text-align: center; 
+    color: #E6DAFF; 
+    font-family: 'Poppins', sans-serif; 
+    font-size: 48px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    padding: 10px 0; 
+    margin: 20px 0; 
+    text-shadow: 
+        0 0 5px #E6DAFF, 
+        0 0 10px #A07BFF, 
+        0 0 15px #A07BFF;
+    border-bottom: #E6DAFF 1px solid;
+">
+    Latest Updates
+</h2>
+
+
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 20px;">
+    {% for x in stories %}
+    <a href="{{ x.link }}" target="_blank">
+        <div class="neon-card"
+            style="background-color: #0D0D0D;border-color: #E6DAFF;border-width: 1px;border-style: solid; width: 300px; padding: 20px; border-radius: 12px; box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+            <img src="{{ x.image }}" alt="{{ x.topic }}" onerror="this.style.display='none'"
+                style="width: 100%; height: auto; border-radius: 8px;">
+            <h3 style="font-family: 'Poppins', sans-serif; margin-top: 15px; color: #E6DAFF; font-size: 1.2em;">
+                {{x.topic}}
+            </h3>
+            <p style="font-family: 'Arial', sans-serif; font-size: 14px; color: #8B05FF;">{{ x.description }}</p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+<style>
+    .neon-card {
+        box-shadow: 0px 6px 18px rgba(140, 0, 255, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .neon-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 12px 24px rgba(139, 5, 255, 0.5), 0px 4px 10px rgba(114, 0, 27, 0.6);
+    }
+</style>
+
+
+<h2 style="
+    text-align: center; 
+    color: #E6DAFF; 
+    font-family: 'Poppins', sans-serif; 
+    font-size: 48px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    padding: 10px 0; 
+    margin: 20px 0; 
+    text-shadow: 
+        0 0 5px #E6DAFF, 
+        0 0 10px #00FF00, 
+        0 0 15px #00FF00;
+    border-bottom: #E6DAFF 1px solid;
+    margin-top: 90px;
+">
+    FeedBAcks
+</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding: 20px;">
+    {% for x in feedback %}
+    <div class="testimonial-card"
+        style="background-color: #0D0D0D; width: 350px; padding: 25px; border-radius: 15px; box-shadow: 0px 6px 20px rgba(0, 255, 0, 0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <p
+            style="font-family: 'Poppins', sans-serif; font-size: 16px; color: #E6DAFF; line-height: 1.6; font-weight: 300;">
+            {{ x.description }}
+        </p>
+        <div style="display: flex; align-items: center; margin-top: 20px;">
+            <div>
+                <h4 style="font-family: 'Poppins', sans-serif; margin: 0; color: #00FF00; font-size: 1.1em;">{{x.name}}
+                </h4>
+                <p style="font-family: 'Arial', sans-serif; margin: 0; font-size: 13px; color: #E6DAFF;">{{x.position}}
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+    .testimonial-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0px 12px 28px rgba(0, 255, 0, 0.6), 0px 4px 12px rgba(114, 0, 27, 0.8);
+    }
+</style>
+
+
+{% endblock content %}
